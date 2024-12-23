@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+
+#include "Grid.h"
+
 namespace MineSweeper
 {
     class Game
@@ -18,11 +22,7 @@ namespace MineSweeper
         void HandleInput();
 
     private:
-        int m_cellHeight;
-        int m_cellWidth;
-        int m_columns = 12;
+        std::unique_ptr<Grid> m_grid;
         bool m_isGameOver = false;
-        int m_mines = 5;
-        int m_rows = 12;
     };
 }

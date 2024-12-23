@@ -9,7 +9,10 @@ namespace MineSweeper
 
     bool Game::IsGameOver() const { return m_isGameOver; }
 
-    void Game::OnRender() const { }
+    void Game::OnRender() const
+    {
+        m_grid->Render();
+    }
 
     void Game::OnUpdate()
     {
@@ -20,8 +23,7 @@ namespace MineSweeper
 
     Game::Game(const int width, const int height)
     {
-        m_cellHeight = height / m_columns;
-        m_cellWidth = width / m_columns;
+        m_grid = std::make_unique<Grid>(Grid::Initialize(width, height));
     }
 
     void Game::HandleInput() { }
