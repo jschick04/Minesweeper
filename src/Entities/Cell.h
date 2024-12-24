@@ -4,12 +4,8 @@
 
 namespace MineSweeper::Entities
 {
-    class Cell
+    struct Cell
     {
-    public:
-        void Render(int x, int y, int cellWidth, int cellHeight) const;
-
-    public:
         int AdjacentMines = 0;
         bool HasMine = false;
         State State = None;

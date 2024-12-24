@@ -8,6 +8,8 @@ namespace MineSweeper
     {
         None,
         Revealed,
-        Flagged
+        Flagged,
+        QuestionMark,
+        Mine
     };
 }
