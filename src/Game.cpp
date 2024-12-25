@@ -7,8 +7,6 @@ namespace MineSweeper
         return { width, height };
     }
 
-    bool Game::IsGameOver() const { return m_isGameOver; }
-
     void Game::OnRender() const
     {
         m_grid->Render();
@@ -16,15 +14,17 @@ namespace MineSweeper
 
     void Game::OnUpdate()
     {
-        if (m_isGameOver) { return; }
-
         HandleInput();
     }
 
-    Game::Game(const int width, const int height)
+    void Game::Reset()
     {
-        m_grid = std::make_unique<Grid>(Grid::Initialize(width, height));
+        m_grid = std::make_unique<Grid>(Grid::Initialize(m_width, m_height));
+        m_startTime = GetTime();
+        m_state = Playing;
     }
+
+    Game::Game(const int width, const int height) : m_height(height), m_width(width) { }
 
     void Game::HandleInput()
     {
@@ -36,7 +36,10 @@ namespace MineSweeper
 
             if (state == Mine)
             {
-                m_isGameOver = true;
+                m_grid->RevealAllMines();
+
+                m_endTime = GetTime();
+                m_state = Lose;
             }
         }
         else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
@@ -48,8 +51,8 @@ namespace MineSweeper
 
         if (m_grid->IsComplete())
         {
-            // TODO: Set win condition
-            m_isGameOver = true;
+            m_endTime = GetTime();
+            m_state = Win;
         }
     }
 }

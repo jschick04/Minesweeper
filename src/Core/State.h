@@ -12,4 +12,13 @@ namespace MineSweeper
         QuestionMark,
         Mine
     };
+
+    enum GameState : uint8_t
+    {
+        MainMenu,
+        OptionsMenu,
+        Playing,
+        Win,
+        Lose
+    };
 }

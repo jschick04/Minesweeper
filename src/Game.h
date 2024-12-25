@@ -12,9 +12,13 @@ namespace MineSweeper
         static Game Initialize(int width, int height);
 
     public:
-        [[nodiscard]] bool IsGameOver() const;
+        [[nodiscard]] GameState CurrentState() const { return m_state; }
+
+        [[nodiscard]] int GetPlayTime() const { return (m_endTime - m_startTime) % 60; }
+
         void OnRender() const;
         void OnUpdate();
+        void Reset();
 
     private:
         Game(int width, int height);
@@ -22,7 +26,11 @@ namespace MineSweeper
         void HandleInput();
 
     private:
+        int m_endTime = 0;
         std::unique_ptr<Grid> m_grid;
-        bool m_isGameOver = false;
+        int m_height;
+        int m_startTime = 0;
+        GameState m_state = MainMenu;
+        int m_width;
     };
 }

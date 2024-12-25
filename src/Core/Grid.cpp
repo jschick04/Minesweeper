@@ -94,6 +94,17 @@ namespace MineSweeper
         }
     }
 
+    void Grid::RevealAllMines()
+    {
+        for (auto& cell : m_grid)
+        {
+            if (cell.HasMine)
+            {
+                cell.State = Mine;
+            }
+        }
+    }
+
     State Grid::RevealCell(const int column, const int row)
     {
         if (!IsValidCell(column, row)) { return None; }

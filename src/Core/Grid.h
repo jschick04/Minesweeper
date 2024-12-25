@@ -16,6 +16,7 @@ namespace MineSweeper
         [[nodiscard]] bool IsComplete() const;
         void Render() const;
         void RevealAdjacentCells(int column, int row);
+        void RevealAllMines();
         State RevealCell(int column, int row);
         void ToggleFlag(int column, int row);
 

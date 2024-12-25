@@ -31,5 +31,10 @@ namespace MineSweeper
     private:
         std::unique_ptr<Game> m_game;
         ApplicationSpecification m_spec;
+
+    private:
+        std::string m_gameOverText = "Game Over";
+        std::string m_restartText = "Press Enter to restart";
+        std::string m_winText = "You Win";
     };
 }
