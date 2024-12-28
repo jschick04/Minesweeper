@@ -9,20 +9,15 @@ namespace MineSweeper
 {
     struct ApplicationSpecification
     {
-        int Height = 600;
-        int Width = 600;
         std::string Title = "MineSweeper";
+        int Width = 600;
+        int Height = 600;
     };
 
     class Application
     {
     public:
         explicit Application(const ApplicationSpecification& spec = ApplicationSpecification());
-        Application(const Application&) = delete;
-        Application(Application&&) = delete;
-        Application& operator=(const Application&) = delete;
-        Application& operator=(Application&&) = delete;
-        ~Application() noexcept = default;
 
         void OnRender() const;
         void OnUpdate() const;
@@ -36,5 +31,10 @@ namespace MineSweeper
         std::string m_gameOverText = "Game Over";
         std::string m_restartText = "Press Enter to restart";
         std::string m_winText = "You Win";
+    };
+
+    inline Application* CreateApplication()
+    {
+        return new Application();
     };
 }

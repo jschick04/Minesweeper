@@ -122,7 +122,7 @@ namespace MineSweeper
         InitWindow(m_spec.Width, m_spec.Height, m_spec.Title.c_str());
         SetTargetFPS(60);
 
-        m_game = std::make_unique<Game>(Game::Initialize(m_spec.Width, m_spec.Height));
+        m_game = Game::Initialize(m_spec.Width, m_spec.Height);
 
         while (!WindowShouldClose())
         {

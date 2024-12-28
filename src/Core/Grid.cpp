@@ -4,9 +4,9 @@
 
 namespace MineSweeper
 {
-    Grid Grid::Initialize(int width, int height)
+    std::unique_ptr<Grid> Grid::Initialize(const int width, int const height)
     {
-        return { width, height };
+        return std::unique_ptr<Grid>(new Grid(width, height));
     }
 
     std::tuple<int, int> Grid::GetCellPosition(const Vector2& position) const

@@ -9,7 +9,7 @@ namespace MineSweeper
     class Game
     {
     public:
-        static Game Initialize(int width, int height);
+        static std::unique_ptr<Game> Initialize(int width, int height);
 
     public:
         [[nodiscard]] GameState CurrentState() const { return m_state; }

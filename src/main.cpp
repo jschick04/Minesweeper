@@ -2,6 +2,9 @@
 
 int main()
 {
-    MineSweeper::Application app;
-    app.Run();
+    MineSweeper::Application* app = MineSweeper::CreateApplication();
+
+    app->Run();
+
+    delete app;
 }

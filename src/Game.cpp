@@ -2,9 +2,9 @@
 
 namespace MineSweeper
 {
-    Game Game::Initialize(const int width, const int height)
+    std::unique_ptr<Game> Game::Initialize(const int width, const int height)
     {
-        return { width, height };
+        return std::unique_ptr<Game>(new Game(width, height));
     }
 
     void Game::OnRender() const
@@ -19,7 +19,7 @@ namespace MineSweeper
 
     void Game::Reset()
     {
-        m_grid = std::make_unique<Grid>(Grid::Initialize(m_width, m_height));
+        m_grid = Grid::Initialize(m_width, m_height);
         m_startTime = GetTime();
         m_state = Playing;
     }

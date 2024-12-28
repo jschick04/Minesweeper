@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include <Entities/Cell.h>
@@ -9,7 +10,7 @@ namespace MineSweeper
     class Grid
     {
     public:
-        static Grid Initialize(int width, int height);
+        static std::unique_ptr<Grid> Initialize(int width, int height);
 
     public:
         [[nodiscard]] std::tuple<int, int> GetCellPosition(const Vector2& position) const;
